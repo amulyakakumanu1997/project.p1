@@ -1,0 +1,18 @@
+@model PizzaBox.Client.Models.LoginModel
+@{
+    TempData.Clear();
+    ViewBag.Title = "Customer - Login";
+    Layout = "_CustomLayout";
+}
+<section>
+    <form method="POST" asp-controller="Customer" asp-action="ReturningCustomer">
+        <input type = "text", name = "OldCustomer.Name", id = "Name" reuired>
+        <button>Sign In</button>
+    </form>
+    <form method = "POST" asp-controller = "Customer" asp-action="NewCustomer">
+
+        <input type = "text", name = "NewCustomer.Name", id = "Name" reuired>
+        <button>Create Customer</button>
+    </form>
+
+</section>

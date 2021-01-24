@@ -1,0 +1,24 @@
+@model PizzaBox.Client.Models.CustomerViewModel
+
+@{
+    ViewBag.Title = "Customer - Home";
+    Layout = "_CustomLayout";
+}
+<section class="col-12">
+    Hello @ViewBag.CustomerName
+    
+    <form asp-controller="Order" asp-action="StartNewOrder" method="POST">
+        @foreach(var store in Model.Order.Stores)
+        {
+            <input type="radio" name="SelectedStoreId" id="@store.EntityId" value="@store.EntityId" required>
+            <label for="@store.EntityId">@store.Name</label>
+        }
+        <input type="hidden" name="CustomerId" value="@Model.CustomerId">
+        <button type="submit">Start New Order</button>
+    </form>
+</section>
+
+<section class="col-12">
+    @Html.Partial("OrderHistory" , Model.CurrentCustomer)
+</section>
+@Html.Partial("logout")
