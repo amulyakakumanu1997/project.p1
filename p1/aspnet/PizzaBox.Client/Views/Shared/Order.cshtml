@@ -1,0 +1,19 @@
+@model PizzaBox.Client.Models.OrderViewModel
+
+<form asp-action="post" asp-controller="order" method="POST">
+    @Html.AntiForgeryToken();
+    @foreach (var store in Model.Stores)
+    {
+        <input type="radio" name="Store" id="@store.EntityId" value="@store.EntityId">
+        <label for="@store.EntityId">@store.Name</label>
+    }
+    @foreach (var pizza in Model.Pizzas)
+    {
+        <input type="checkbox" name="PizzaSelection" id="@pizza.Name" value="@pizza.Name">
+        <label for="@pizza.Name">@pizza.Name</label>
+        @Html.Partial("Size", pizza.Size)
+        @Html.Partial("Crust", pizza.Crust)
+    }
+    <button type="submit">Place Order</button>
+
+</form>

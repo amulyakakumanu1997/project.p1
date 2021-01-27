@@ -1,0 +1,6 @@
+@foreach (var order in @Model.Orders)
+{
+    <div class="row">
+        <h3>Order : has @order.Pizzas.Count Pizzas and cost: $@order.TotalPrice</h3>
+    </div>
+}
